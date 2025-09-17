@@ -2,6 +2,8 @@ import { PageContentArea } from '@/components/navigation/page-content-area'
 import { Arimo } from 'next/font/google'
 import './globals.css'
 
+import { Analytics } from '@vercel/analytics/next'
+
 // If loading a variable font, you don't need to specify the font weight
 const arimo = Arimo({
 	subsets: ['latin'],
@@ -58,6 +60,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
 			<body>
 				<PageContentArea>{children}</PageContentArea>
+				<Analytics />
 			</body>
 		</html>
 	)
