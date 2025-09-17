@@ -8,6 +8,7 @@
 		"start": "next start",
 		"lint": "next lint",
 		"format": "pretty-quick && npm run lint",
+		"preinstall": "npx only-allow pnpm",
 		"prepare": "husky",
 		"test": "jest",
 		"test:watch": "jest --watch",
