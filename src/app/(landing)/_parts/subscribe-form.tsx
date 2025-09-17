@@ -53,7 +53,7 @@ export const SubscribeForm = (props: SubscribeFormProps) => {
 			} else {
 				setStatus('❌ Ocorreu um erro: ' + result.message)
 			}
-		} catch (error) {
+		} catch {
 			setStatus('❌ Erro ao enviar cadastro.')
 		} finally {
 			setLoading(false)
