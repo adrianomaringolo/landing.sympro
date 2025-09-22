@@ -17,7 +17,8 @@ export const CTALaunching = () => {
 				Pronto para transformar seu negócio?
 			</h2>
 			<p className="text-muted-foreground">
-				Inscreva-se para receber as notícias e ficar ligado ao nosso lançamento
+				Estamos criando algo incrível! Inscreva-se para receber as notícias e ficar ligado
+				ao nosso lançamento
 			</p>
 
 			<div className="mt-4">
