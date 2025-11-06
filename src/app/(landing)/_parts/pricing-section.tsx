@@ -19,9 +19,9 @@ export const PricingSection = () => {
 			period: 'mês',
 			description: 'Para conhecer nossa ferramenta e começar a  organizar',
 			features: [
-				'Até 50 lançamentos/mês',
-				'Até 20 clientes ativos',
-				'Até 30 agendamentos/mês',
+				'Cadastro de clientes',
+				'Cadastro de serviços',
+				'Agenda completa',
 				'Relatórios básicos',
 				'1 usuário',
 				'Suporte básico via email',
@@ -37,9 +37,11 @@ export const PricingSection = () => {
 			description:
 				'Ideal para o profissional individual quer quer tirar o maior proveito da ferramenta e crescer',
 			features: [
-				'Lançamentos ilimitados',
-				'Até 100 clientes ativos',
-				'Agendamentos ilimitados',
+				'Tudo do plano gratuito',
+				'Follow-up inteligente e aniversariantes',
+				'Personalização do dashboard',
+				'Novas visualizações da agenda',
+				'Central de Educação - conteúdos e cursos educativos',
 				'Relatórios detalhados',
 				'1 usuário',
 				'Suporte prioritário via email e chat',
@@ -55,12 +57,11 @@ export const PricingSection = () => {
 			description:
 				'Para sua equipe que precisa de uma solução personalizada e suporte dedicado',
 			features: [
-				'Lançamentos ilimitados',
-				'Sem limites de clientes ativos',
-				'Agendamentos ilimitados',
-				'Relatórios detalhados e exportação de dados',
+				'Tudo do plano Profissional',
+				'Ainda mais relatórios detalhados e exportação de dados',
 				'Até 10 usuários',
 				'Suporte prioritário via email e chat',
+				'Automação de mensagens',
 				'Mais integrações para sua equipe',
 				'Onboarding e treinamento personalizado',
 				'Prioridade no desenvolvimento de novas funcionalidades',
