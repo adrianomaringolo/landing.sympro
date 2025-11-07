@@ -8,8 +8,30 @@ import {
 	CardHeader,
 	CardTitle,
 } from 'buildgrid-ui'
+import { motion, type Variants } from 'framer-motion'
 
 export const FeaturesSection = () => {
+	const containerVariants: Variants = {
+		hidden: { opacity: 0 },
+		visible: {
+			opacity: 1,
+			transition: {
+				staggerChildren: 0.1,
+			},
+		},
+	}
+
+	const itemVariants: Variants = {
+		hidden: { opacity: 0, y: 40 },
+		visible: {
+			opacity: 1,
+			y: 0,
+			transition: {
+				duration: 0.7,
+				ease: [0.16, 1, 0.3, 1] as any,
+			},
+		},
+	}
 	const features = [
 		{
 			icon: '📅',
@@ -62,39 +84,55 @@ export const FeaturesSection = () => {
 	]
 
 	return (
-		<section id="beneficios" className="py-20 bg-muted/30">
+		<section
+			id="beneficios"
+			className="py-20 bg-gradient-to-b from-muted/30 to-background"
+		>
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-				<div className="text-center mb-16">
-					<Badge className="mb-4 bg-accent/10 text-accent border-accent/20">
+				<motion.div
+					initial={{ opacity: 0, y: 30 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true, margin: '-100px' }}
+					transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+					className="text-center mb-16"
+				>
+					<Badge className="mb-4 bg-accent/10 text-accent border-accent/20 text-sm px-4 py-2">
 						O que oferecemos
 					</Badge>
-					<h2 className="text-3xl sm:text-4xl font-bold text-balance mb-4">
+					<h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-balance mb-4">
 						Benefícios para você, <span className="text-primary">profissional</span>
 					</h2>
-					<p className="text-xl text-muted-foreground text-pretty max-w-2xl mx-auto">
+					<p className="text-lg sm:text-xl text-muted-foreground text-pretty max-w-3xl mx-auto">
 						O apoio que você precisa para cuidar do seu negócio com tranquilidade e
 						facilidade. Estamos aqui para ajudar!
 					</p>
-				</div>
+				</motion.div>
 
-				<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+				<motion.div
+					variants={containerVariants}
+					initial="hidden"
+					whileInView="visible"
+					viewport={{ once: true, margin: '-100px' }}
+					className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+				>
 					{features.map((feature, index) => (
-						<Card
-							key={index}
-							className="border-border/50 hover:border-accent/50 transition-colors text-4xl"
-						>
-							<CardHeader>
-								<div className="mb-4">{feature.icon}</div>
-								<CardTitle className="text-xl">{feature.title}</CardTitle>
-							</CardHeader>
-							<CardContent>
-								<CardDescription className="text-base">
-									{feature.description}
-								</CardDescription>
-							</CardContent>
-						</Card>
+						<motion.div key={index} variants={itemVariants}>
+							<Card className="border-border/50 hover:border-primary/50 hover:shadow-lg transition-all duration-300 group h-full">
+								<CardHeader>
+									<div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
+										{feature.icon}
+									</div>
+									<CardTitle className="text-lg font-bold">{feature.title}</CardTitle>
+								</CardHeader>
+								<CardContent>
+									<CardDescription className="text-sm leading-relaxed">
+										{feature.description}
+									</CardDescription>
+								</CardContent>
+							</Card>
+						</motion.div>
 					))}
-				</div>
+				</motion.div>
 			</div>
 		</section>
 	)

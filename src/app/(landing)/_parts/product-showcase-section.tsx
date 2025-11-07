@@ -111,18 +111,21 @@ export const ProductShowcaseSection = () => {
 	}
 
 	return (
-		<section className="py-20" id="funcionalidades">
+		<section
+			className="py-20 bg-gradient-to-b from-background to-muted/30"
+			id="funcionalidades"
+		>
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="text-center mb-16">
-					<Badge className="mb-4 bg-accent text-accent-foreground border-accent">
+					<Badge className="mb-4 bg-accent/10 text-accent border-accent/20 text-sm px-4 py-2">
 						Funcionalidades
 					</Badge>
-					<h2 className="text-3xl sm:text-4xl font-bold text-balance mb-4">
+					<h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-balance mb-4">
 						Veja o SymPro <span className="text-primary">em ação</span>
 					</h2>
-					<p className="text-xl text-muted-foreground text-pretty max-w-2xl mx-auto">
+					<p className="text-lg sm:text-xl text-muted-foreground text-pretty max-w-3xl mx-auto">
 						Explore nossa interface intuitiva e recursos poderosos que tornam a
-						organização so seu negócio simples e eficaz.
+						organização do seu negócio simples e eficaz.
 					</p>
 				</div>
 
@@ -130,7 +133,7 @@ export const ProductShowcaseSection = () => {
 					<div className="relative">
 						{/* Carousel Container */}
 						<div
-							className="overflow-hidden rounded-lg border border-border/50 bg-card"
+							className="overflow-hidden rounded-xl border border-border/50 bg-card shadow-xl"
 							onMouseEnter={handleMouseEnter}
 							onMouseLeave={handleMouseLeave}
 						>

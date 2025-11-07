@@ -3,12 +3,8 @@
 
 const { version } = require('./package.json')
 
-const withPWA = require('next-pwa')({
-	dest: 'public',
-})
-
-module.exports = withPWA({
+module.exports = {
 	env: {
 		version,
 	},
-})
+}

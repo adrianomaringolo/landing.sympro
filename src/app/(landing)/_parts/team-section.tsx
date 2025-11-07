@@ -1,9 +1,34 @@
+'use client'
+
 import { Badge, Card, CardContent } from 'buildgrid-ui'
 import { Globe, Instagram } from 'lucide-react'
+import { motion } from 'motion/react'
 import Image from 'next/image'
 import Link from 'next/link'
 
 export const TeamSection = () => {
+	const containerVariants = {
+		hidden: { opacity: 0 },
+		visible: {
+			opacity: 1,
+			transition: {
+				staggerChildren: 0.2,
+			},
+		},
+	}
+
+	const itemVariants = {
+		hidden: { opacity: 0, scale: 0.9, y: 30 },
+		visible: {
+			opacity: 1,
+			scale: 1,
+			y: 0,
+			transition: {
+				duration: 0.7,
+				ease: [0.16, 1, 0.3, 1],
+			},
+		},
+	}
 	const teamMembers = [
 		{
 			name: 'Daniela Pontes',
@@ -30,67 +55,82 @@ export const TeamSection = () => {
 	]
 
 	return (
-		<section id="team" className="py-20 bg-muted/30">
+		<section id="team" className="py-20 bg-gradient-to-b from-muted/30 to-background">
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-				<div className="text-center mb-16">
-					<Badge className="mb-4 bg-accent/10 text-accent border-accent/20">
+				<motion.div
+					initial={{ opacity: 0, y: 30 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true, margin: '-100px' }}
+					transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+					className="text-center mb-16"
+				>
+					<Badge className="mb-4 bg-accent/10 text-accent border-accent/20 text-sm px-4 py-2">
 						Nosso time
 					</Badge>
-					<h2 className="text-3xl sm:text-4xl font-bold text-balance mb-4">
+					<h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-balance mb-4">
 						Conheça quem está por trás do <span className="text-primary">SymPro</span>
 					</h2>
-					<p className="text-xl text-muted-foreground text-pretty max-w-2xl mx-auto">
+					<p className="text-lg sm:text-xl text-muted-foreground text-pretty max-w-3xl mx-auto">
 						Nosso time reunido para criar uma solução simples e inovadora para você e seu
 						negócio.
 					</p>
-				</div>
+				</motion.div>
 
-				<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+				<motion.div
+					variants={containerVariants}
+					initial="hidden"
+					whileInView="visible"
+					viewport={{ once: true, margin: '-100px' }}
+					className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
+				>
 					{teamMembers.map((member, index) => (
-						<Card
-							key={index}
-							className="border-border/50 hover:border-accent/50 transition-colors text-center"
-						>
-							<CardContent className="pt-6">
-								<div className="mb-6">
-									<div className="relative w-24 h-24 mx-auto mb-4">
-										<Image
-											src={member.image || '/placeholder.svg'}
-											alt={`${member.name}`}
-											width={96}
-											height={96}
-											className="w-full h-full object-cover rounded-full border-2 border-accent/20"
-										/>
+						<motion.div key={index} variants={itemVariants}>
+							<Card className="border-border/50 hover:border-primary/50 hover:shadow-lg transition-all duration-300 text-center group h-full">
+								<CardContent className="pt-8 pb-6">
+									<div className="mb-6">
+										<div className="relative w-32 h-32 mx-auto mb-6">
+											<Image
+												src={member.image || '/placeholder.svg'}
+												alt={`${member.name}`}
+												width={128}
+												height={128}
+												className="w-full h-full object-cover rounded-full border-4 border-primary/20 group-hover:border-primary/40 transition-colors shadow-md"
+											/>
+										</div>
+										<h3 className="text-xl font-bold mb-3 text-gray-900">
+											{member.name}
+										</h3>
+										<p className="text-sm text-muted-foreground leading-relaxed text-left px-2">
+											{member.description}
+										</p>
+										<div className="flex justify-center gap-3 mt-6">
+											{member.instagram ? (
+												<Link
+													href={member.instagram}
+													className="p-2 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors"
+													target="_blank"
+													rel="noopener noreferrer"
+												>
+													<Instagram className="w-5 h-5" />
+												</Link>
+											) : null}
+											{member.website ? (
+												<Link
+													href={member.website}
+													className="p-2 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors"
+													target="_blank"
+													rel="noopener noreferrer"
+												>
+													<Globe className="w-5 h-5" />
+												</Link>
+											) : null}
+										</div>
 									</div>
-									<h3 className="text-xl font-semibold mb-1">{member.name}</h3>
-									<p className="text-sm text-muted-foreground leading-relaxed">
-										{member.description}
-									</p>
-									<div className="flex justify-center gap-2 text-gray-600 mt-4">
-										{member.instagram ? (
-											<Link
-												href={member.instagram}
-												className="hover:text-gray-950"
-												target="_blank"
-											>
-												<Instagram />
-											</Link>
-										) : null}
-										{member.website ? (
-											<Link
-												href={member.website}
-												className="hover:text-gray-950"
-												target="_blank"
-											>
-												<Globe />
-											</Link>
-										) : null}
-									</div>
-								</div>
-							</CardContent>
-						</Card>
+								</CardContent>
+							</Card>
+						</motion.div>
 					))}
-				</div>
+				</motion.div>
 			</div>
 		</section>
 	)

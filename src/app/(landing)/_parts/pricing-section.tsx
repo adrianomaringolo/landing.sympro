@@ -9,11 +9,35 @@ import {
 	CardHeader,
 	CardTitle,
 } from 'buildgrid-ui'
+import { motion, type Variants } from 'framer-motion'
 import { CheckCircle } from 'lucide-react'
 import { useState } from 'react'
 
 export const PricingSection = () => {
 	const [isAnnual, setIsAnnual] = useState(false)
+
+	const containerVariants: Variants = {
+		hidden: { opacity: 0 },
+		visible: {
+			opacity: 1,
+			transition: {
+				staggerChildren: 0.15,
+			},
+		},
+	}
+
+	const itemVariants: Variants = {
+		hidden: { opacity: 0, scale: 0.9, y: 30 },
+		visible: {
+			opacity: 1,
+			scale: 1,
+			y: 0,
+			transition: {
+				duration: 0.7,
+				ease: [0.16, 1, 0.3, 1] as any,
+			},
+		},
+	}
 
 	const formatPrice = (price: number | null) => {
 		if (price === null) return 'a definir'
@@ -84,7 +108,13 @@ export const PricingSection = () => {
 	return (
 		<section id="planos" className="py-20 bg-muted/30">
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-				<div className="text-center mb-16">
+				<motion.div
+					initial={{ opacity: 0, y: 30 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true, margin: '-100px' }}
+					transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+					className="text-center mb-16"
+				>
 					<Badge className="mb-4 bg-accent/10 text-accent border-accent/20">
 						Nossos planos
 					</Badge>
@@ -125,68 +155,76 @@ export const PricingSection = () => {
 							</button>
 						</div>
 					</div>
-				</div>
+				</motion.div>
 
-				<div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+				<motion.div
+					variants={containerVariants}
+					initial="hidden"
+					whileInView="visible"
+					viewport={{ once: true, margin: '-100px' }}
+					className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto"
+				>
 					{plans.map((plan, index) => (
-						<Card
-							key={index}
-							className={`flex flex-col h-full relative ${plan.popular ? 'border-accent shadow-lg scale-105' : 'border-border/50'}`}
-						>
-							{plan.popular && (
-								<Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-accent text-accent-foreground">
-									Mais popular
-								</Badge>
-							)}
-							<CardHeader className="text-center">
-								<CardTitle className="text-2xl">{plan.name}</CardTitle>
-								<div className="mt-4">
-									<span className="text-4xl font-bold">
-										{formatPrice(isAnnual ? plan.annualPrice : plan.monthlyPrice)}
-									</span>
-									<span className="text-muted-foreground">/mês</span>
-									{isAnnual && plan.annualPrice > 0 && (
-										<>
-											<div className="text-sm text-muted-foreground mt-1">
-												{formatPrice(plan.annualPrice * 12)} cobrado anualmente
-											</div>
-											{plan.monthlyPrice > 0 && (
-												<div className="text-sm text-green-600 font-medium mt-1">
-													Economize{' '}
-													{formatPrice(plan.monthlyPrice * 12 - plan.annualPrice * 12)} (
-													{Math.round(
-														((plan.monthlyPrice * 12 - plan.annualPrice * 12) /
-															(plan.monthlyPrice * 12)) *
-															100,
-													)}
-													%) no ano
+						<motion.div key={index} variants={itemVariants}>
+							<Card
+								className={`flex flex-col h-full relative ${plan.popular ? 'border-accent shadow-lg scale-105' : 'border-border/50'}`}
+							>
+								{plan.popular && (
+									<Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-accent text-accent-foreground">
+										Mais popular
+									</Badge>
+								)}
+								<CardHeader className="text-center">
+									<CardTitle className="text-2xl">{plan.name}</CardTitle>
+									<div className="mt-4">
+										<span className="text-4xl font-bold">
+											{formatPrice(isAnnual ? plan.annualPrice : plan.monthlyPrice)}
+										</span>
+										<span className="text-muted-foreground">/mês</span>
+										{isAnnual && plan.annualPrice > 0 && (
+											<>
+												<div className="text-sm text-muted-foreground mt-1">
+													{formatPrice(plan.annualPrice * 12)} cobrado anualmente
 												</div>
-											)}
-										</>
-									)}
-								</div>
-								<CardDescription className="mt-2">{plan.description}</CardDescription>
-							</CardHeader>
-							<CardContent className="flex-1 flex flex-col justify-between">
-								<ul className="space-y-3 mb-6">
-									{plan.features.map((feature, featureIndex) => (
-										<li key={featureIndex} className="flex items-center">
-											<CheckCircle className="h-5 w-5 text-accent mr-3 flex-shrink-0" />
-											<span className="text-sm">{feature}</span>
-										</li>
-									))}
-								</ul>
-								<Button
-									disabled
-									className={`w-full mt-auto ${plan.popular ? 'bg-secondary hover:bg-secondary/90' : 'bg-primary hover:bg-primary/90'}`}
-									size="lg"
-								>
-									{plan.button}
-								</Button>
-							</CardContent>
-						</Card>
+												{plan.monthlyPrice > 0 && (
+													<div className="text-sm text-green-600 font-medium mt-1">
+														Economize{' '}
+														{formatPrice(plan.monthlyPrice * 12 - plan.annualPrice * 12)}{' '}
+														(
+														{Math.round(
+															((plan.monthlyPrice * 12 - plan.annualPrice * 12) /
+																(plan.monthlyPrice * 12)) *
+																100,
+														)}
+														%) no ano
+													</div>
+												)}
+											</>
+										)}
+									</div>
+									<CardDescription className="mt-2">{plan.description}</CardDescription>
+								</CardHeader>
+								<CardContent className="flex-1 flex flex-col justify-between">
+									<ul className="space-y-3 mb-6">
+										{plan.features.map((feature, featureIndex) => (
+											<li key={featureIndex} className="flex items-center">
+												<CheckCircle className="h-5 w-5 text-accent mr-3 flex-shrink-0" />
+												<span className="text-sm">{feature}</span>
+											</li>
+										))}
+									</ul>
+									<Button
+										disabled
+										className={`w-full mt-auto ${plan.popular ? 'bg-secondary hover:bg-secondary/90' : 'bg-primary hover:bg-primary/90'}`}
+										size="lg"
+									>
+										{plan.button}
+									</Button>
+								</CardContent>
+							</Card>
+						</motion.div>
 					))}
-				</div>
+				</motion.div>
 			</div>
 		</section>
 	)

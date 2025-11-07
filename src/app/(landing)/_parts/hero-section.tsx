@@ -25,89 +25,100 @@ export const HeroSection = () => {
 				style={{
 					background: 'white',
 					backgroundImage: `
-						linear-gradient(to right, rgba(71,85,105,0.1) 1px, transparent 1px),
-						linear-gradient(to bottom, rgba(71,85,105,0.1) 1px, transparent 1px),
-						radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.1) 30%, transparent 80%)
+						linear-gradient(to right, rgba(71,85,105,0.08) 1px, transparent 1px),
+						linear-gradient(to bottom, rgba(71,85,105,0.08) 1px, transparent 1px),
+						radial-gradient(circle at 30% 20%, rgba(16, 185, 129, 0.12) 0%, transparent 50%),
+						radial-gradient(circle at 70% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%)
 					`,
-					backgroundSize: '32px 32px, 32px 32px, 100% 100%',
+					backgroundSize: '40px 40px, 40px 40px, 100% 100%, 100% 100%',
 				}}
 			/>
-			<section className="relative py-20 lg:py-25 overflow-hidden">
-				<div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
-					<div className="max-w-4xl mx-auto text-center">
-						<Badge className="mb-6 bg-blue-900/50 text-base ">
+			<section className="relative min-h-[calc(100vh-80px)] flex items-center overflow-hidden py-12">
+				{/* Elementos decorativos flutuantes */}
+				<div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-pulse" />
+				<div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-pulse delay-1000" />
+
+				<div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+					<div className="max-w-5xl mx-auto text-center">
+						<Badge className="mb-6 bg-gradient-to-r from-primary/20 to-blue-500/20 text-primary border-primary/30 text-sm sm:text-base px-4 py-2 animate-fade-in">
 							🚀 Lançamento em breve, fique ligado!
 						</Badge>
 
 						<h1
 							className={cn(
 								mitr.className,
-								'text-4xl sm:text-5xl lg:text-6xl text-balance mb-6 uppercase text-gray-800',
+								'text-4xl sm:text-5xl lg:text-6xl text-balance mb-6 uppercase text-gray-900 font-bold tracking-tight animate-fade-in-up',
 							)}
 						>
 							Diga{' '}
-							<span className={cn(fingerPaint.className, 'text-primary text-[1.5em]')}>
+							<span
+								className={cn(
+									fingerPaint.className,
+									'text-primary text-[1.5em] inline-block transform hover:scale-110 transition-transform duration-300',
+								)}
+							>
 								SYM
 							</span>
 							<br />
-							<span className="text-2xl sm:text-3xl lg:text-4xl leading-1">
+							<span className="text-2xl sm:text-3xl lg:text-4xl leading-tight block mt-3">
 								para mais
 								<br />
 								<TypeAnimation
 									preRenderFirstString={true}
 									sequence={[
-										3000,
+										2000,
 										'controle 🗒️',
-										3000,
+										2500,
 										'tempo ⏳',
-										3000,
+										2500,
 										'clientes 👥',
-										3000,
+										2500,
 										'crescimento 📈',
-										3000,
+										2500,
 										'organização 🗂️',
-										3000,
+										2500,
 										'tranquilidade 🧘',
-										3000,
+										2500,
 										'relacionamento ❤️',
-										3000,
+										2500,
 										'eficiência 🚀',
-										3000,
+										2500,
 										'rendimentos 💰',
-										3000,
+										2500,
 									]}
-									className="text-primary text-3xl sm:text-4xl lg:text-5xl font-semibold"
-									speed={20}
+									className="text-primary text-3xl sm:text-4xl lg:text-5xl font-bold inline-block min-h-[1.2em]"
+									speed={25}
 									repeat={Infinity}
 								/>
 							</span>
 						</h1>
 
-						<p className="text-xl text-muted-foreground text-pretty mb-8 max-w-2xl mx-auto leading-relaxed">
-							Transforme a organização do seu negócio com nossa plataforma. Controle
-							clientes, agendamentos e finanças em um só lugar.
+						<p className="text-lg sm:text-xl text-muted-foreground text-pretty mb-8 max-w-3xl mx-auto leading-relaxed animate-fade-in-up animation-delay-200">
+							Transforme a organização do seu negócio com nossa plataforma completa.
+							<span className="block text-base sm:text-lg mt-2">
+								Controle clientes, agendamentos e finanças em um só lugar.
+							</span>
 						</p>
 
-						{/* <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-						<Button
-							size="lg"
-							className="bg-primary hover:bg-primary/90 text-lg px-8 py-3"
-						>
-							Experimente Grátis
-							<ArrowRight className="ml-2 h-5 w-5" />
-						</Button>
-						<Button size="lg" variant="secondary" className="text-lg px-8 py-3">
-							Veja uma demonstração
-						</Button>
-					</div> 
-					
-					<p className="text-sm text-muted-foreground mt-4">
-						<span className="font-semibold">Sem necessidade de cartão de crédito</span> •
-						14 dias de teste gratuito • Cancele a qualquer momento
-					</p>
-					*/}
+						<div className="animate-fade-in-up animation-delay-400 mb-8">
+							<CTALaunching />
+						</div>
 
-						<CTALaunching />
+						{/* Indicadores de confiança */}
+						<div className="flex flex-wrap justify-center items-center gap-6 text-xs sm:text-sm text-muted-foreground animate-fade-in animation-delay-600">
+							<div className="flex items-center gap-2">
+								<span className="text-primary text-lg">✓</span>
+								<span>Sem cartão de crédito</span>
+							</div>
+							<div className="flex items-center gap-2">
+								<span className="text-primary text-lg">✓</span>
+								<span>Teste grátis</span>
+							</div>
+							<div className="flex items-center gap-2">
+								<span className="text-primary text-lg">✓</span>
+								<span>Cancele quando quiser</span>
+							</div>
+						</div>
 					</div>
 				</div>
 			</section>

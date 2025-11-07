@@ -125,7 +125,11 @@ export const Footer = () => {
 					</div>
 					<span className="text-xl font-bold">SymPro</span>
 				</div>
-				<p className="mb-6">Um sistema simples, do jeito que o seu negócio merece.</p>
+				<p>Um sistema simples, do jeito que o seu negócio merece.</p>
+
+				<p className="text-sm text-gray-500 mb-6">
+					Feito com ❤️ por empreendedores para para empreendedores
+				</p>
 
 				<p className="text-muted-foreground mb-4">
 					Dúvidas? Sugestões? Entre em contato através do e-mail{' '}

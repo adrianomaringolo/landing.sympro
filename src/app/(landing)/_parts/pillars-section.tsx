@@ -1,9 +1,32 @@
 'use client'
 
 import { Badge, Card, CardContent } from 'buildgrid-ui'
+import { motion, type Variants } from 'framer-motion'
 import { Clock, DollarSign, Users } from 'lucide-react'
 
 export const PillarsSection = () => {
+	const containerVariants: Variants = {
+		hidden: { opacity: 0 },
+		visible: {
+			opacity: 1,
+			transition: {
+				staggerChildren: 0.2,
+			},
+		},
+	}
+
+	const itemVariants: Variants = {
+		hidden: { opacity: 0, y: 50, scale: 0.95 },
+		visible: {
+			opacity: 1,
+			y: 0,
+			scale: 1,
+			transition: {
+				duration: 0.8,
+				ease: [0.16, 1, 0.3, 1] as any,
+			},
+		},
+	}
 	const pillars = [
 		{
 			icon: Users,
@@ -37,7 +60,13 @@ export const PillarsSection = () => {
 	return (
 		<section id="pilares" className="py-20 bg-background">
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-				<div className="text-center mb-16">
+				<motion.div
+					initial={{ opacity: 0, y: 30 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true, margin: '-100px' }}
+					transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+					className="text-center mb-16"
+				>
 					<Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
 						Os 3 Pilares
 					</Badge>
@@ -49,38 +78,43 @@ export const PillarsSection = () => {
 						Nossa plataforma foi desenvolvida para atender as três áreas essenciais do seu
 						negócio, trazendo organização e crescimento sustentável.
 					</p>
-				</div>
+				</motion.div>
 
-				<div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+				<motion.div
+					variants={containerVariants}
+					initial="hidden"
+					whileInView="visible"
+					viewport={{ once: true, margin: '-100px' }}
+					className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto"
+				>
 					{pillars.map((pillar, index) => {
 						const Icon = pillar.icon
 						return (
-							<Card
-								key={index}
-								className="border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-lg"
-							>
-								<CardContent>
-									<div
-										className={`w-16 h-16 rounded-2xl ${pillar.bgColor} flex items-center justify-center mb-6`}
-									>
-										<Icon className={`h-8 w-8 ${pillar.color}`} />
-									</div>
-									<h3 className="text-xl font-bold mb-3">{pillar.title}</h3>
-									<p className="text-muted-foreground leading-relaxed mb-6">
-										{pillar.description}
-									</p>
-									<div className="aspect-video bg-muted/30 rounded-lg overflow-hidden">
-										<img
-											src={pillar.image}
-											alt={pillar.title}
-											className="w-full h-full object-cover"
-										/>
-									</div>
-								</CardContent>
-							</Card>
+							<motion.div key={index} variants={itemVariants}>
+								<Card className="border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-lg h-full">
+									<CardContent>
+										<div
+											className={`w-16 h-16 rounded-2xl ${pillar.bgColor} flex items-center justify-center mb-6`}
+										>
+											<Icon className={`h-8 w-8 ${pillar.color}`} />
+										</div>
+										<h3 className="text-xl font-bold mb-3">{pillar.title}</h3>
+										<p className="text-muted-foreground leading-relaxed mb-6">
+											{pillar.description}
+										</p>
+										<div className="aspect-video bg-muted/30 rounded-lg overflow-hidden">
+											<img
+												src={pillar.image}
+												alt={pillar.title}
+												className="w-full h-full object-cover"
+											/>
+										</div>
+									</CardContent>
+								</Card>
+							</motion.div>
 						)
 					})}
-				</div>
+				</motion.div>
 			</div>
 		</section>
 	)
