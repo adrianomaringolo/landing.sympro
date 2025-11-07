@@ -6,6 +6,7 @@ import { FinalCTASection } from './_parts/final-cta-section'
 import { Footer } from './_parts/footer'
 import { Header } from './_parts/header'
 import { HeroSection } from './_parts/hero-section'
+import { PillarsSection } from './_parts/pillars-section'
 import { PricingSection } from './_parts/pricing-section'
 import { ProductShowcaseSection } from './_parts/product-showcase-section'
 import { TeamSection } from './_parts/team-section'
@@ -15,6 +16,7 @@ export default function StreamLineLanding() {
 		<div className="min-h-screen bg-background">
 			<Header />
 			<HeroSection />
+			<PillarsSection />
 			<DeviceSection />
 			<FeaturesSection />
 			<ProductShowcaseSection />
