@@ -1,13 +1,13 @@
 'use client'
 
 import { Badge, Card, CardContent } from 'buildgrid-ui'
+import { motion, type Variants } from 'framer-motion'
 import { Globe, Instagram } from 'lucide-react'
-import { motion } from 'motion/react'
 import Image from 'next/image'
 import Link from 'next/link'
 
 export const TeamSection = () => {
-	const containerVariants = {
+	const containerVariants: Variants = {
 		hidden: { opacity: 0 },
 		visible: {
 			opacity: 1,
@@ -17,7 +17,7 @@ export const TeamSection = () => {
 		},
 	}
 
-	const itemVariants = {
+	const itemVariants: Variants = {
 		hidden: { opacity: 0, scale: 0.9, y: 30 },
 		visible: {
 			opacity: 1,
@@ -25,7 +25,7 @@ export const TeamSection = () => {
 			y: 0,
 			transition: {
 				duration: 0.7,
-				ease: [0.16, 1, 0.3, 1],
+				ease: 'easeOut',
 			},
 		},
 	}

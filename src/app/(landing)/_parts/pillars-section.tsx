@@ -3,6 +3,7 @@
 import { Badge, Card, CardContent } from 'buildgrid-ui'
 import { motion, type Variants } from 'framer-motion'
 import { Clock, DollarSign, Users } from 'lucide-react'
+import Image from 'next/image'
 
 export const PillarsSection = () => {
 	const containerVariants: Variants = {
@@ -23,7 +24,7 @@ export const PillarsSection = () => {
 			scale: 1,
 			transition: {
 				duration: 0.8,
-				ease: [0.16, 1, 0.3, 1] as any,
+				ease: 'easeOut',
 			},
 		},
 	}
@@ -102,11 +103,12 @@ export const PillarsSection = () => {
 										<p className="text-muted-foreground leading-relaxed mb-6">
 											{pillar.description}
 										</p>
-										<div className="aspect-video bg-muted/30 rounded-lg overflow-hidden">
-											<img
+										<div className="aspect-video bg-muted/30 rounded-lg overflow-hidden relative">
+											<Image
 												src={pillar.image}
 												alt={pillar.title}
-												className="w-full h-full object-cover"
+												fill
+												className="object-cover"
 											/>
 										</div>
 									</CardContent>

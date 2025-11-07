@@ -63,7 +63,7 @@ export const ProductShowcaseSection = () => {
 				clearInterval(intervalRef.current)
 			}
 		}
-	}, [screenshots.length, isPaused])
+	}, [isPaused])
 
 	const resetAutoPlay = () => {
 		if (intervalRef.current) {
