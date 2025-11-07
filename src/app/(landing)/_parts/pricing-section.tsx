@@ -10,13 +10,22 @@ import {
 	CardTitle,
 } from 'buildgrid-ui'
 import { CheckCircle } from 'lucide-react'
+import { useState } from 'react'
 
 export const PricingSection = () => {
+	const [isAnnual, setIsAnnual] = useState(false)
+
+	const formatPrice = (price: number | null) => {
+		if (price === null) return 'a definir'
+		if (price === 0) return 'R$ 0'
+		return `R$ ${price.toFixed(2).replace('.', ',')}`
+	}
+
 	const plans = [
 		{
 			name: 'Gratuito',
-			price: 'R$ 0',
-			period: 'mês',
+			monthlyPrice: 0,
+			annualPrice: 0,
 			description: 'Para conhecer nossa ferramenta e começar a  organizar',
 			features: [
 				'Cadastro de clientes',
@@ -32,8 +41,8 @@ export const PricingSection = () => {
 		},
 		{
 			name: 'Profissional',
-			price: 'R$ 49,90',
-			period: 'mês',
+			monthlyPrice: 49.9,
+			annualPrice: 39.9,
 			description:
 				'Ideal para o profissional individual quer quer tirar o maior proveito da ferramenta e crescer',
 			features: [
@@ -51,15 +60,16 @@ export const PricingSection = () => {
 			button: 'Iniciar teste grátis',
 		},
 		{
-			name: 'Empresa',
-			price: 'a definir',
-			period: 'mês',
+			name: 'Profissional+',
+			monthlyPrice: 99.9,
+			annualPrice: 85.9,
 			description:
 				'Para sua equipe que precisa de uma solução personalizada e suporte dedicado',
 			features: [
 				'Tudo do plano Profissional',
 				'Ainda mais relatórios detalhados e exportação de dados',
-				'Até 10 usuários',
+				'Até 3 usuários',
+				'Agendas e carteira de clientes compartilhadas',
 				'Suporte prioritário via email e chat',
 				'Automação de mensagens',
 				'Mais integrações para sua equipe',
@@ -86,6 +96,35 @@ export const PricingSection = () => {
 						Escolha o plano que atende suas necessidades. Todos os planos incluem nossos
 						recursos principais e suporte.
 					</p>
+
+					{/* Toggle de período */}
+					<div className="flex items-center justify-center mt-8 mb-8">
+						<div className="flex items-center bg-muted rounded-lg p-1">
+							<button
+								onClick={() => setIsAnnual(false)}
+								className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
+									!isAnnual
+										? 'bg-background text-foreground shadow-sm'
+										: 'text-muted-foreground hover:text-foreground'
+								}`}
+							>
+								Mensal
+							</button>
+							<button
+								onClick={() => setIsAnnual(true)}
+								className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
+									isAnnual
+										? 'bg-background text-foreground shadow-sm'
+										: 'text-muted-foreground hover:text-foreground'
+								}`}
+							>
+								Anual
+								<Badge className="ml-2 bg-accent/20 text-accent text-xs">
+									com desconto
+								</Badge>
+							</button>
+						</div>
+					</div>
 				</div>
 
 				<div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -102,8 +141,29 @@ export const PricingSection = () => {
 							<CardHeader className="text-center">
 								<CardTitle className="text-2xl">{plan.name}</CardTitle>
 								<div className="mt-4">
-									<span className="text-4xl font-bold">{plan.price}</span>
-									<span className="text-muted-foreground">/{plan.period}</span>
+									<span className="text-4xl font-bold">
+										{formatPrice(isAnnual ? plan.annualPrice : plan.monthlyPrice)}
+									</span>
+									<span className="text-muted-foreground">/mês</span>
+									{isAnnual && plan.annualPrice > 0 && (
+										<>
+											<div className="text-sm text-muted-foreground mt-1">
+												{formatPrice(plan.annualPrice * 12)} cobrado anualmente
+											</div>
+											{plan.monthlyPrice > 0 && (
+												<div className="text-sm text-green-600 font-medium mt-1">
+													Economize{' '}
+													{formatPrice(plan.monthlyPrice * 12 - plan.annualPrice * 12)} (
+													{Math.round(
+														((plan.monthlyPrice * 12 - plan.annualPrice * 12) /
+															(plan.monthlyPrice * 12)) *
+															100,
+													)}
+													%) no ano
+												</div>
+											)}
+										</>
+									)}
 								</div>
 								<CardDescription className="mt-2">{plan.description}</CardDescription>
 							</CardHeader>
