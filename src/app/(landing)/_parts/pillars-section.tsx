@@ -34,7 +34,7 @@ export const PillarsSection = () => {
 			title: 'Gestão de Carteira de Clientes',
 			description:
 				'Organize e acompanhe todos os seus clientes em um só lugar. Histórico completo, preferências e follow-ups automáticos para nunca perder uma oportunidade.',
-			image: 'https://app.sympro.com.br/images/education/client-management.jpg',
+			image: '/images/client-management.jpg',
 			color: 'text-blue-600',
 			bgColor: 'bg-blue-50',
 		},
@@ -43,7 +43,7 @@ export const PillarsSection = () => {
 			title: 'Gestão de Tempo',
 			description:
 				'Agenda inteligente que otimiza seu dia. Visualize compromissos, evite conflitos e maximize sua produtividade com lembretes automáticos.',
-			image: 'https://app.sympro.com.br/images/education/time-management.jpg',
+			image: '/images/time-management.jpg',
 			color: 'text-purple-600',
 			bgColor: 'bg-purple-50',
 		},
@@ -52,7 +52,7 @@ export const PillarsSection = () => {
 			title: 'Gestão Financeira',
 			description:
 				'Controle completo das suas finanças. Acompanhe receitas, despesas e tenha relatórios detalhados para tomar decisões estratégicas.',
-			image: 'https://app.sympro.com.br/images/education/financial-management.jpg',
+			image: '/images/financial-management.jpg',
 			color: 'text-green-600',
 			bgColor: 'bg-green-50',
 		},
