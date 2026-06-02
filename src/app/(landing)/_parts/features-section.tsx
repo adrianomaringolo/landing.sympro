@@ -155,17 +155,17 @@ export const FeaturesSection = () => {
 										h-full rounded-2xl border border-border/50 bg-card/70 p-6
 										hover:border-primary/40 hover:shadow-[0_0_24px_oklch(0.52_0.117_195_/_0.07)]
 										transition-all duration-300
-										${isWide ? 'flex gap-6 items-center' : ''}
+										${isWide ? 'md:flex md:gap-6 md:items-center' : ''}
 									`}
 								>
 									<div
 										className={`
 											rounded-2xl flex items-center justify-center shrink-0
 											${feature.iconBg}
-											${isWide ? 'w-20 h-20' : 'w-16 h-16 mb-4'}
+											${isWide ? 'w-16 h-16 mb-4 md:w-20 md:h-20 md:mb-0' : 'w-16 h-16 mb-4'}
 										`}
 									>
-										<Icon className={`${feature.iconColor} ${isWide ? 'w-10 h-10' : 'w-8 h-8'}`} />
+										<Icon className={`${feature.iconColor} ${isWide ? 'w-8 h-8 md:w-10 md:h-10' : 'w-8 h-8'}`} />
 									</div>
 									<div>
 										<h3 className="font-bold text-base mb-2 leading-snug text-foreground">
