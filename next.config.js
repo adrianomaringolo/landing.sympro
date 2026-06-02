@@ -7,4 +7,9 @@ module.exports = {
 	env: {
 		version,
 	},
+	images: {
+		formats: ['image/webp'],
+		minimumCacheTTL: 31536000,
+	},
+	compress: true,
 }

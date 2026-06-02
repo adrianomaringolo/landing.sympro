@@ -234,12 +234,16 @@ export const HeroSection = () => {
 								key={i}
 								onClick={() => setActiveIndex(i)}
 								aria-label={`Ver imagem ${i + 1}`}
-								className="h-1.5 rounded-full transition-all duration-500 cursor-pointer"
-								style={{
-									width: i === activeIndex ? '24px' : '6px',
-									background: i === activeIndex ? 'white' : 'rgba(255,255,255,0.4)',
-								}}
-							/>
+								className="p-2 cursor-pointer"
+							>
+								<span
+									className="block h-1.5 rounded-full transition-all duration-500"
+									style={{
+										width: i === activeIndex ? '24px' : '6px',
+										background: i === activeIndex ? 'white' : 'rgba(255,255,255,0.4)',
+									}}
+								/>
+							</button>
 						))}
 					</div>
 				</div>

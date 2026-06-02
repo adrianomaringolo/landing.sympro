@@ -65,6 +65,18 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 			<head>
 				<meta name="theme-color" content="#008080" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+				{/* Preconnect for Google Fonts CDN */}
+				<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+				{/* Preconnect for YouTube thumbnails (video facade) */}
+				<link rel="preconnect" href="https://i.ytimg.com" crossOrigin="anonymous" />
+				{/* Preload first hero image to improve LCP */}
+				<link
+					rel="preload"
+					as="image"
+					imageSrcSet="/_next/image?url=%2Fimages%2Fhero-professional.jpg&w=828&q=75 828w, /_next/image?url=%2Fimages%2Fhero-professional.jpg&w=1200&q=75 1200w, /_next/image?url=%2Fimages%2Fhero-professional.jpg&w=1920&q=75 1920w"
+					imageSizes="(max-width: 1024px) 100vw, 55vw"
+					fetchPriority="high"
+				/>
 			</head>
 			<body>
 				<PageContentArea>{children}</PageContentArea>

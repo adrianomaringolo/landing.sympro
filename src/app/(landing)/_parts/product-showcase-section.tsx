@@ -155,13 +155,17 @@ export const ProductShowcaseSection = () => {
 							<button
 								key={index}
 								onClick={() => setCurrentSlide(index)}
-								className={`transition-all duration-300 rounded-full ${
-									index === currentSlide
-										? 'w-6 h-2 bg-primary'
-										: 'w-2 h-2 bg-border hover:bg-muted-foreground'
-								}`}
 								aria-label={`Ver slide ${index + 1}`}
-							/>
+								className="p-2"
+							>
+								<span
+									className={`block transition-all duration-300 rounded-full h-2 ${
+										index === currentSlide
+											? 'w-6 bg-primary'
+											: 'w-2 bg-border hover:bg-muted-foreground'
+									}`}
+								/>
+							</button>
 						))}
 					</div>
 				</div>
