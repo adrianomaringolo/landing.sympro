@@ -1,4 +1,6 @@
-import { Badge, Button } from 'buildgrid-ui'
+'use client'
+
+import { Button } from 'buildgrid-ui'
 import { ArrowRight, ChevronLeft, ChevronRight, X } from 'lucide-react'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
@@ -7,35 +9,33 @@ const screenshots = [
 	{
 		title: 'Painel de acompanhamento',
 		description:
-			'Tenha uma visão geral dos seus agendamentos, clientes e finanças em um painel intuitivo.',
+			'Visão geral dos seus agendamentos, clientes e finanças em um painel intuitivo.',
 		image: '/images/screenshots/feature-1-dashboard.jpeg',
 	},
 	{
 		title: 'Lançamentos rápidos',
 		description:
-			'Registre entradas e despesas em segundos com nosso formulário simplificado.',
+			'Registre entradas e despesas em segundos com formulário simplificado.',
 		image: '/images/screenshots/feature-2-lancamentos.jpeg',
 	},
 	{
 		title: 'Carteira de clientes',
-		description: 'Gerencie suas informações de clientes de forma eficiente e organizada.',
+		description: 'Gerencie informações de clientes de forma eficiente e organizada.',
 		image: '/images/screenshots/feature-3-clientes.jpeg',
 	},
 	{
 		title: 'Registro de serviços',
-		description: 'Gerencie suas informações de serviços de forma eficiente e organizada.',
+		description: 'Cadastre e gerencie todos os serviços que você oferece.',
 		image: '/images/screenshots/feature-4-servicos.jpeg',
 	},
 	{
 		title: 'Crie e acompanhe metas',
-		description:
-			'Defina metas claras e acompanhe seu progresso com relatórios detalhados.',
+		description: 'Defina metas claras e acompanhe seu progresso com relatórios detalhados.',
 		image: '/images/screenshots/feature-5-metas.jpeg',
 	},
 	{
 		title: 'Relatórios detalhados',
-		description:
-			'Gere relatórios financeiros e de agendamentos para tomar decisões informadas.',
+		description: 'Gere relatórios financeiros e de agendamentos para decidir com dados.',
 		image: '/images/screenshots/feature-6-relatorios.jpeg',
 	},
 ]
@@ -48,27 +48,18 @@ export const ProductShowcaseSection = () => {
 	const [isPaused, setIsPaused] = useState(false)
 
 	useEffect(() => {
-		const startAutoPlay = () => {
-			if (!isPaused) {
-				intervalRef.current = setInterval(() => {
-					setCurrentSlide((prev) => (prev + 1) % screenshots.length)
-				}, 5000)
-			}
+		if (!isPaused) {
+			intervalRef.current = setInterval(() => {
+				setCurrentSlide((prev) => (prev + 1) % screenshots.length)
+			}, 5000)
 		}
-
-		startAutoPlay()
-
 		return () => {
-			if (intervalRef.current) {
-				clearInterval(intervalRef.current)
-			}
+			if (intervalRef.current) clearInterval(intervalRef.current)
 		}
 	}, [isPaused])
 
 	const resetAutoPlay = () => {
-		if (intervalRef.current) {
-			clearInterval(intervalRef.current)
-		}
+		if (intervalRef.current) clearInterval(intervalRef.current)
 		if (!isPaused) {
 			intervalRef.current = setInterval(() => {
 				setCurrentSlide((prev) => (prev + 1) % screenshots.length)
@@ -76,66 +67,28 @@ export const ProductShowcaseSection = () => {
 		}
 	}
 
-	const nextSlide = () => {
-		setCurrentSlide((prev) => (prev + 1) % screenshots.length)
-		resetAutoPlay()
-	}
-
-	const prevSlide = () => {
-		setCurrentSlide((prev) => (prev - 1 + screenshots.length) % screenshots.length)
-		resetAutoPlay()
-	}
-
-	const handleMouseEnter = () => {
-		setIsPaused(true)
-		if (intervalRef.current) {
-			clearInterval(intervalRef.current)
-		}
-	}
-
-	const handleMouseLeave = () => {
-		setIsPaused(false)
-		intervalRef.current = setInterval(() => {
-			setCurrentSlide((prev) => (prev + 1) % screenshots.length)
-		}, 5000)
-	}
-
-	const openLightbox = (image: string) => {
-		setLightboxImage(image)
-		setLightboxOpen(true)
-	}
-
-	const closeLightbox = () => {
-		setLightboxOpen(false)
-		setLightboxImage('')
-	}
+	const nextSlide = () => { setCurrentSlide((p) => (p + 1) % screenshots.length); resetAutoPlay() }
+	const prevSlide = () => { setCurrentSlide((p) => (p - 1 + screenshots.length) % screenshots.length); resetAutoPlay() }
 
 	return (
-		<section
-			className="py-20 bg-gradient-to-b from-background to-muted/30"
-			id="funcionalidades"
-		>
+		<section className="py-24 bg-muted/20" id="funcionalidades">
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-				<div className="text-center mb-16">
-					<Badge className="mb-4 bg-accent/10 text-accent border-accent/20 text-sm px-4 py-2">
-						Funcionalidades
-					</Badge>
-					<h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-balance mb-4">
-						Veja o SymPro <span className="text-primary">em ação</span>
+				<div className="text-center mb-14">
+					<h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-balance mb-4 leading-tight">
+						Veja o SymPro{' '}
+						<span className="text-primary">em ação</span>
 					</h2>
-					<p className="text-lg sm:text-xl text-muted-foreground text-pretty max-w-3xl mx-auto">
-						Explore nossa interface intuitiva e recursos poderosos que tornam a
-						organização do seu negócio simples e eficaz.
+					<p className="text-lg text-muted-foreground text-pretty max-w-2xl mx-auto">
+						Interface pensada para ser usada de verdade — sem curva de aprendizado.
 					</p>
 				</div>
 
-				<div className="max-w-6xl mx-auto">
+				<div className="max-w-5xl mx-auto">
 					<div className="relative">
-						{/* Carousel Container */}
 						<div
-							className="overflow-hidden rounded-xl border border-border/50 bg-card shadow-xl"
-							onMouseEnter={handleMouseEnter}
-							onMouseLeave={handleMouseLeave}
+							className="overflow-hidden rounded-2xl border border-border/50 bg-card shadow-2xl"
+							onMouseEnter={() => setIsPaused(true)}
+							onMouseLeave={() => setIsPaused(false)}
 						>
 							<div
 								className="flex transition-transform duration-500 ease-in-out"
@@ -144,28 +97,32 @@ export const ProductShowcaseSection = () => {
 								{screenshots.map((screenshot, index) => (
 									<div key={index} className="w-full flex-shrink-0">
 										<div className="grid lg:grid-cols-2 gap-8 p-8 items-center">
-											{/* Content */}
-											<div className="space-y-6">
+											<div className="space-y-4 order-2 lg:order-1">
+												<p className="text-xs font-semibold text-primary uppercase tracking-widest">
+													Funcionalidade {index + 1} de {screenshots.length}
+												</p>
 												<h3 className="text-2xl font-bold">{screenshot.title}</h3>
-												<p className="text-lg text-muted-foreground leading-relaxed">
+												<p className="text-muted-foreground leading-relaxed">
 													{screenshot.description}
 												</p>
-												<Button disabled className="bg-primary hover:bg-primary/90">
-													Teste essa funcionalidade (em breve)
+												<Button
+													disabled
+													className="bg-primary hover:bg-primary/90 text-primary-foreground"
+												>
+													Testar esta função
 													<ArrowRight className="ml-2 h-4 w-4" />
 												</Button>
 											</div>
 
-											{/* Screenshot */}
-											<div className="relative">
-												<div className="aspect-[4/3] rounded-lg overflow-hidden border border-border/50 bg-muted/30">
+											<div className="order-1 lg:order-2">
+												<div className="aspect-[4/3] rounded-xl overflow-hidden border border-border/40 bg-muted/30">
 													<Image
 														src={screenshot.image || '/placeholder.svg'}
 														alt={screenshot.title}
 														width={1000}
-														height={500}
-														className="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300"
-														onClick={() => openLightbox(screenshot.image)}
+														height={750}
+														className="w-full h-full object-cover cursor-pointer hover:scale-[1.02] transition-transform duration-500"
+														onClick={() => { setLightboxImage(screenshot.image); setLightboxOpen(true) }}
 													/>
 												</div>
 											</div>
@@ -175,65 +132,64 @@ export const ProductShowcaseSection = () => {
 							</div>
 						</div>
 
-						{/* Navigation Buttons */}
+						{/* Nav buttons */}
 						<button
 							onClick={prevSlide}
-							className="absolute left-4 top-1/2 md:top-auto md:bottom-4 -translate-y-1/2 bg-background/80 backdrop-blur-sm border border-border/50 rounded-full p-2 hover:bg-background transition-colors"
-							aria-label="Previous screenshot"
+							className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full border border-border/60 bg-card/90 backdrop-blur-sm flex items-center justify-center hover:border-primary/50 transition-colors"
+							aria-label="Slide anterior"
 						>
-							<ChevronLeft className="h-5 w-5" />
+							<ChevronLeft className="h-4 w-4" />
 						</button>
-
 						<button
 							onClick={nextSlide}
-							className="absolute right-4 top-1/2 md:top-auto md:bottom-4 -translate-y-1/2 bg-background/80 backdrop-blur-sm border border-border/50 rounded-full p-2 hover:bg-background transition-colors"
-							aria-label="Next screenshot"
+							className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full border border-border/60 bg-card/90 backdrop-blur-sm flex items-center justify-center hover:border-primary/50 transition-colors"
+							aria-label="Próximo slide"
 						>
-							<ChevronRight className="h-5 w-5" />
+							<ChevronRight className="h-4 w-4" />
 						</button>
 					</div>
 
-					{/* Dots Indicator */}
-					<div className="flex justify-center mt-8 space-x-2">
+					{/* Dot indicators */}
+					<div className="flex justify-center mt-6 gap-2">
 						{screenshots.map((_, index) => (
 							<button
 								key={index}
 								onClick={() => setCurrentSlide(index)}
-								className={`w-3 h-3 rounded-full transition-colors ${
-									index === currentSlide ? 'bg-primary' : 'bg-gray-500/30'
+								className={`transition-all duration-300 rounded-full ${
+									index === currentSlide
+										? 'w-6 h-2 bg-primary'
+										: 'w-2 h-2 bg-border hover:bg-muted-foreground'
 								}`}
-								aria-label={`Go to screenshot ${index + 1}`}
+								aria-label={`Ver slide ${index + 1}`}
 							/>
 						))}
 					</div>
 				</div>
-
-				{/* Lightbox Modal */}
-				{lightboxOpen && (
-					<div
-						className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-						onClick={closeLightbox}
-					>
-						<div className="relative max-w-7xl max-h-[80vh] w-full">
-							<button
-								onClick={closeLightbox}
-								className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors"
-								aria-label="Close lightbox"
-							>
-								<X className="h-8 w-8" />
-							</button>
-							<Image
-								src={lightboxImage || '/placeholder.svg'}
-								alt="Screenshot in full view"
-								width={1400}
-								height={1050}
-								className="object-contain max-h-[80vh]  rounded-lg"
-								onClick={(e) => e.stopPropagation()}
-							/>
-						</div>
-					</div>
-				)}
 			</div>
+
+			{/* Lightbox */}
+			{lightboxOpen && (
+				<div
+					className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+					onClick={() => { setLightboxOpen(false); setLightboxImage('') }}
+				>
+					<button
+						onClick={() => { setLightboxOpen(false); setLightboxImage('') }}
+						className="absolute top-4 right-4 w-10 h-10 rounded-full bg-card/80 border border-border/50 flex items-center justify-center text-foreground/70 hover:text-foreground transition-colors"
+						aria-label="Fechar imagem"
+					>
+						<X className="h-5 w-5" />
+					</button>
+					<Image
+						src={lightboxImage || '/placeholder.svg'}
+						alt="Screenshot em tela cheia"
+						width={1400}
+						height={1050}
+						className="object-contain max-h-[88vh] rounded-xl"
+						onClick={(e) => e.stopPropagation()}
+					/>
+				</div>
+			)}
 		</section>
 	)
 }

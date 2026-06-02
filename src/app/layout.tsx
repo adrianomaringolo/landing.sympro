@@ -1,19 +1,18 @@
 import { PageContentArea } from '@/components/navigation/page-content-area'
-import { Arimo } from 'next/font/google'
+import { Manrope } from 'next/font/google'
 import './globals.css'
 
 import { Analytics } from '@vercel/analytics/next'
 
-// If loading a variable font, you don't need to specify the font weight
-const arimo = Arimo({
+const manrope = Manrope({
 	subsets: ['latin'],
 	display: 'swap',
-	weight: '400',
+	weight: ['400', '500', '600', '700', '800'],
 })
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
-		<html lang="pt-br" className={arimo.className}>
+		<html lang="pt-br" className={manrope.className}>
 			<head>
 				<meta name="description" content="Organize as finanças dos seus serviços" />
 				<meta name="theme-color" content="#008080" />
