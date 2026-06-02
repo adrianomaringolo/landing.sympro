@@ -1,0 +1,49 @@
+# SymPro
+
+> Plataforma de gestão completa para profissionais autônomos e pequenos negócios de serviços no Brasil.
+
+## O que é o SymPro
+
+O SymPro é um software SaaS brasileiro voltado para profissionais autônomos que precisam organizar clientes, agendamentos e finanças em um único lugar. Focado em simplicidade — se você usa WhatsApp, consegue usar o SymPro.
+
+## Para quem é
+
+- Fisioterapeutas
+- Personal trainers
+- Esteticistas e profissionais de beleza
+- Cabeleireiros e barbeiros
+- Outros profissionais autônomos de saúde, bem-estar e estética
+
+## Funcionalidades principais
+
+- **Agenda**: Controle completo de agendamentos
+- **Clientes**: CRM simplificado para histórico e contatos
+- **Finanças**: Lançamentos de receitas e despesas, metas financeiras
+- **Relatórios**: Visão geral do negócio e indicadores de desempenho
+- **Serviços**: Catálogo de serviços com preços e duração
+
+## Planos e preços
+
+- **Gratuito**: Clientes, agenda e relatórios básicos — sem cartão de crédito
+- **Planos pagos**: Recursos avançados, ilimitado
+
+## Diferenciais
+
+- 100% web — sem instalação, sem atualizações manuais
+- Responsivo: funciona em celular, tablet e computador
+- Conformidade com LGPD
+- Suporte em português
+
+## Status
+
+Produto em fase final de desenvolvimento. Inscrições abertas para acesso antecipado.
+
+## Contato
+
+- Email: sympro.contato@gmail.com
+- Site: https://sympro.com.br
+
+## Links
+
+- [Página principal](https://sympro.com.br)
+- [Cadastro / lista de espera](https://sympro.com.br#cadastro)

@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { MessageCircle, Target, Zap } from 'lucide-react'
 import { CTALaunching } from './cta-launching'
 
 export const FinalCTASection = () => {
@@ -49,13 +50,13 @@ export const FinalCTASection = () => {
 
 					<div className="mt-10 flex flex-wrap justify-center items-center gap-8 text-sm text-muted-foreground">
 						{[
-							{ icon: '🎯', label: 'Fácil de usar' },
-							{ icon: '⚡', label: 'Resultados rápidos' },
-							{ icon: '💬', label: 'Suporte dedicado' },
-						].map((item) => (
-							<div key={item.label} className="flex items-center gap-2">
-								<span className="text-base">{item.icon}</span>
-								<span>{item.label}</span>
+							{ Icon: Target,        label: 'Fácil de usar' },
+							{ Icon: Zap,           label: 'Resultados rápidos' },
+							{ Icon: MessageCircle, label: 'Suporte dedicado' },
+						].map(({ Icon, label }) => (
+							<div key={label} className="flex items-center gap-2">
+								<Icon className="w-4 h-4 text-primary" />
+								<span>{label}</span>
 							</div>
 						))}
 					</div>

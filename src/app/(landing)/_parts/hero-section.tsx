@@ -124,8 +124,8 @@ export const HeroSection = () => {
 
 					{/* Tagline */}
 					<p className="relative text-lg text-white/70 text-pretty mb-10 max-w-md leading-relaxed animate-fade-in-up">
-						Controle clientes, agendamentos e finanças em um só lugar.
-						Simples o suficiente para usar todos os dias.
+						Nunca mais perca um cliente por esquecimento. Agenda, financeiro
+						e follow-up em um único lugar.
 					</p>
 
 					{/* CTA */}

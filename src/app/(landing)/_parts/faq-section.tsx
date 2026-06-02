@@ -8,7 +8,7 @@ const faqs = [
 	{
 		question: 'O SymPro tem um plano gratuito?',
 		answer:
-			'Sim. O plano gratuito inclui cadastro de clientes, agenda completa e relatórios básicos. Você pode começar sem cartão de crédito e fazer upgrade quando precisar de mais recursos.',
+			'Sim. O plano gratuito inclui cadastro de clientes e serviços, controle financeiro básico, agenda completa e relatórios básicos. Você pode começar sem cartão de crédito e fazer upgrade quando precisar de mais recursos. Para mais detalhes veja a nossos planos.',
 	},
 	{
 		question: 'Funciona no celular?',
@@ -35,6 +35,16 @@ const faqs = [
 		answer:
 			'Nenhuma. O SymPro foi pensado para profissionais que não são de tecnologia. Se você usa WhatsApp, você consegue usar o SymPro — a interface é direta e sem jargão.',
 	},
+	{
+		question: 'Posso cancelar quando quiser?',
+		answer:
+			'Sim, sem burocracia. Você pode cancelar sua assinatura a qualquer momento, direto nas configurações da conta, sem precisar falar com ninguém. Não há fidelidade ou multa.',
+	},
+	{
+		question: 'O que acontece com meus dados se eu cancelar?',
+		answer:
+			'Seus dados são seus. Antes de cancelar — ou a qualquer momento — você pode exportar clientes, histórico financeiro e agendamentos em formato padrão. Nada se perde.',
+	},
 ]
 
 export const FAQSection = () => {
@@ -55,8 +65,7 @@ export const FAQSection = () => {
 					className="max-w-2xl mx-auto text-center mb-14"
 				>
 					<h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-balance mb-4 leading-tight">
-						Perguntas{' '}
-						<span className="text-primary">frequentes</span>
+						Perguntas <span className="text-primary">frequentes</span>
 					</h2>
 					<p className="text-lg text-muted-foreground text-pretty">
 						Ainda tem dúvidas? Estamos aqui para ajudar.
@@ -84,7 +93,9 @@ export const FAQSection = () => {
 									onClick={() => toggle(index)}
 									aria-expanded={openIndex === index}
 								>
-									<span className="font-semibold text-sm leading-snug text-foreground">{faq.question}</span>
+									<span className="font-semibold text-sm leading-snug text-foreground">
+										{faq.question}
+									</span>
 									<span
 										className={`shrink-0 w-6 h-6 rounded-full border flex items-center justify-center transition-all duration-200 ${
 											openIndex === index
