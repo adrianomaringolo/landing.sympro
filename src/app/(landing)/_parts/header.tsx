@@ -15,7 +15,7 @@ export const Header = () => {
 						<Image src="/logo-letter.png" alt="SymPro" width={110} height={48} className="h-10 w-auto" />
 					</div>
 
-					<nav className="hidden md:flex items-center space-x-8">
+					<nav aria-label="Principal" className="hidden md:flex items-center space-x-8">
 						{[
 							{ href: '#beneficios', label: 'Benefícios' },
 							{ href: '#funcionalidades', label: 'Funcionalidades' },
@@ -43,7 +43,7 @@ export const Header = () => {
 
 				{isMenuOpen && (
 					<div className="md:hidden py-4 border-t border-border/40">
-						<nav className="flex flex-col space-y-4">
+						<nav aria-label="Menu mobile" className="flex flex-col space-y-4">
 							{[
 								{ href: '#beneficios', label: 'Benefícios' },
 								{ href: '#funcionalidades', label: 'Funcionalidades' },

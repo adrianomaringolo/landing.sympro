@@ -21,20 +21,22 @@ export default function SymProLanding() {
 		<div className="min-h-screen bg-background">
 			<StructuredData />
 			<Header />
-			<HeroSection />
-			<ForWhoSection />
-			<PillarsSection />
-			<HowItWorksSection />
-			<VideoSection />
-			<DeviceSection />
-			<FeaturesSection />
-			<DiferenciaisSection />
-			<ProductShowcaseSection />
-			<TestimonialsSection />
-			<PricingSection />
-			<TeamSection />
-			<FAQSection />
-			<FinalCTASection />
+			<main>
+				<HeroSection />
+				<ForWhoSection />
+				<PillarsSection />
+				<HowItWorksSection />
+				<VideoSection />
+				<DeviceSection />
+				<FeaturesSection />
+				<DiferenciaisSection />
+				<ProductShowcaseSection />
+				<TestimonialsSection />
+				<PricingSection />
+				<TeamSection />
+				<FAQSection />
+				<FinalCTASection />
+			</main>
 			<Footer />
 		</div>
 	)

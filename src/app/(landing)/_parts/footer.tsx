@@ -16,7 +16,7 @@ export const Footer = () => {
 					</div>
 
 					{/* Nav links */}
-					<nav className="flex flex-wrap gap-6">
+					<nav aria-label="Rodapé" className="flex flex-wrap gap-6">
 						{[
 							{ href: '#pilares', label: 'Pilares' },
 							{ href: '#beneficios', label: 'Benefícios' },

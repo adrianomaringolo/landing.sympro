@@ -80,6 +80,7 @@ export const HeroSection = () => {
 
 					{/* Headline */}
 					<h1
+						aria-label="SymPro — diga sim para mais controle, organização e crescimento no seu negócio"
 						className="relative font-extrabold leading-[1.05] tracking-tight text-white text-balance mb-6 animate-fade-in-up"
 						style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}
 					>

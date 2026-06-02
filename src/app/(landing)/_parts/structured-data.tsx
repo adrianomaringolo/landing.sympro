@@ -41,6 +41,20 @@ const faqs = [
 	},
 ]
 
+const websiteSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'WebSite',
+	name: 'SymPro',
+	url: 'https://sympro.com.br',
+	description:
+		'Plataforma de gestão completa para profissionais autônomos: agenda, clientes e finanças em um só lugar.',
+	inLanguage: 'pt-BR',
+	publisher: {
+		'@type': 'Organization',
+		name: 'SymPro',
+	},
+}
+
 const organizationSchema = {
 	'@context': 'https://schema.org',
 	'@type': 'Organization',
@@ -103,6 +117,10 @@ const faqSchema = {
 export function StructuredData() {
 	return (
 		<>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+			/>
 			<script
 				type="application/ld+json"
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
