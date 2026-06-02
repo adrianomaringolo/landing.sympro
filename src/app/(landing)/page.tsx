@@ -14,6 +14,7 @@ import { ProductShowcaseSection } from './_parts/product-showcase-section'
 import { StructuredData } from './_parts/structured-data'
 import { TeamSection } from './_parts/team-section'
 import { TestimonialsSection } from './_parts/testimonials-section'
+import { VideoSection } from './_parts/video-section'
 
 export default function SymProLanding() {
 	return (
@@ -24,6 +25,7 @@ export default function SymProLanding() {
 			<ForWhoSection />
 			<PillarsSection />
 			<HowItWorksSection />
+			<VideoSection />
 			<DeviceSection />
 			<FeaturesSection />
 			<DiferenciaisSection />
