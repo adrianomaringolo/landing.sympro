@@ -10,6 +10,9 @@ module.exports = {
 	images: {
 		formats: ['image/webp'],
 		minimumCacheTTL: 31536000,
+		remotePatterns: [
+			{ protocol: 'https', hostname: 'i.ytimg.com' },
+		],
 	},
 	compress: true,
 }

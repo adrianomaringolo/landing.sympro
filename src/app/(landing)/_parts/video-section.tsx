@@ -35,11 +35,17 @@ export const VideoSection = () => {
 								className="absolute inset-0 w-full h-full group cursor-pointer"
 							>
 								<Image
-									src={`https://img.youtube.com/vi/${VIDEO_ID}/maxresdefault.jpg`}
+									src={`https://i.ytimg.com/vi/${VIDEO_ID}/maxresdefault.jpg`}
 									alt="Thumbnail do vídeo de apresentação do SymPro"
 									fill
 									className="object-cover"
 									sizes="(max-width: 1024px) 100vw, 896px"
+									onError={(e) => {
+										const img = e.currentTarget
+										if (!img.src.includes('hqdefault')) {
+											img.src = `https://i.ytimg.com/vi/${VIDEO_ID}/hqdefault.jpg`
+										}
+									}}
 								/>
 								<div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors duration-300" />
 								<div className="absolute inset-0 flex items-center justify-center">
