@@ -1,5 +1,6 @@
 import { DeviceSection } from './_parts/devices-section'
 import { DiferenciaisSection } from './_parts/diferenciais-section'
+import { EducationSection } from './_parts/education-section'
 import { FAQSection } from './_parts/faq-section'
 import { FeaturesSection } from './_parts/features-section'
 import { FinalCTASection } from './_parts/final-cta-section'
@@ -30,6 +31,7 @@ export default function SymProLanding() {
 				<DeviceSection />
 				<FeaturesSection />
 				<DiferenciaisSection />
+				<EducationSection />
 				<ProductShowcaseSection />
 				<TestimonialsSection />
 				<PricingSection />
