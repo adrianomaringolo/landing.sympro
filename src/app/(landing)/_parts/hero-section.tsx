@@ -16,6 +16,10 @@ const fingerPaint = Finger_Paint({
 })
 
 const TEAL = 'oklch(0.52 0.117 195)'
+const BG = 'oklch(0.975 0.005 195)'
+const INK = 'oklch(0.18 0.025 200)'
+const INK_MUTED = 'oklch(0.44 0.018 200)'
+const INK_SUBTLE = 'oklch(0.56 0.012 200)'
 
 const heroImages = [
 	{
@@ -57,44 +61,62 @@ export const HeroSection = () => {
 		<section className="relative overflow-hidden">
 			<div className="grid lg:grid-cols-[45%_55%] min-h-[calc(100vh-64px)]">
 
-				{/* ── LEFT: brand teal panel ── */}
+				{/* ── LEFT: neutral panel with teal grid ── */}
 				<div
 					className="relative flex flex-col justify-center px-8 sm:px-12 lg:px-14 xl:px-16 py-20 z-10"
-					style={{ background: TEAL }}
+					style={{ background: BG }}
 				>
-					{/* Subtle dot texture */}
+					{/* Teal grid texture */}
 					<div
 						aria-hidden
 						className="absolute inset-0 pointer-events-none"
 						style={{
-							backgroundImage: 'radial-gradient(circle, oklch(1 0 0 / 0.07) 1px, transparent 1px)',
-							backgroundSize: '28px 28px',
+							backgroundImage: `linear-gradient(oklch(0.52 0.117 195 / 0.07) 1px, transparent 1px), linear-gradient(90deg, oklch(0.52 0.117 195 / 0.07) 1px, transparent 1px)`,
+							backgroundSize: '40px 40px',
+						}}
+					/>
+					{/* Radial fade: grid recua ao centro, aparece nas bordas */}
+					<div
+						aria-hidden
+						className="absolute inset-0 pointer-events-none"
+						style={{
+							background: `radial-gradient(ellipse 85% 85% at 15% 50%, ${BG} 25%, transparent 100%)`,
 						}}
 					/>
 
 					{/* Launch badge */}
-					<div className="relative inline-flex items-center gap-2 self-start px-4 py-1.5 rounded-full border border-white/25 bg-white/10 text-white/90 text-sm font-medium mb-10 animate-fade-in">
-						<span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+					<div
+						className="relative inline-flex items-center gap-2 self-start px-4 py-1.5 rounded-full text-sm font-medium mb-10 animate-fade-in"
+						style={{
+							border: `1px solid oklch(0.52 0.117 195 / 0.28)`,
+							background: 'oklch(0.52 0.117 195 / 0.07)',
+							color: TEAL,
+						}}
+					>
+						<span
+							className="w-1.5 h-1.5 rounded-full animate-pulse"
+							style={{ background: TEAL }}
+						/>
 						Lançamento em breve — seja um dos primeiros
 					</div>
 
 					{/* Headline */}
 					<h1
 						aria-label="SymPro — diga sim para mais controle, organização e crescimento no seu negócio"
-						className="relative font-extrabold leading-[1.05] tracking-tight text-white text-balance mb-6 animate-fade-in-up"
-						style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}
+						className="relative font-extrabold leading-[1.05] tracking-tight text-balance mb-6 animate-fade-in-up"
+						style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', color: INK }}
 					>
 						Diga{' '}
 						<span
 							className={fingerPaint.className}
-							style={{ fontSize: '1.22em', color: 'oklch(0.93 0.06 195)' }}
+							style={{ fontSize: '1.22em', color: TEAL }}
 						>
 							SYM
 						</span>
 						<br />
 						<span
-							className="font-bold text-white/90"
-							style={{ fontSize: 'clamp(1.5rem, 3vw, 2.4rem)' }}
+							className="font-bold"
+							style={{ fontSize: 'clamp(1.5rem, 3vw, 2.4rem)', color: INK }}
 						>
 							para mais{' '}
 							<TypeAnimation
@@ -116,7 +138,8 @@ export const HeroSection = () => {
 									'rendimentos',
 									2500,
 								]}
-								className="underline decoration-white/30 underline-offset-4"
+								className="underline underline-offset-4"
+								style={{ textDecorationColor: 'oklch(0.52 0.117 195 / 0.35)' }}
 								speed={30}
 								repeat={Infinity}
 							/>
@@ -124,7 +147,10 @@ export const HeroSection = () => {
 					</h1>
 
 					{/* Tagline */}
-					<p className="relative text-lg text-white/70 text-pretty mb-10 max-w-md leading-relaxed animate-fade-in-up">
+					<p
+						className="relative text-lg text-pretty mb-10 max-w-md leading-relaxed animate-fade-in-up"
+						style={{ color: INK_MUTED }}
+					>
 						Nunca mais perca um cliente por esquecimento. Agenda, financeiro
 						e follow-up em um único lugar.
 					</p>
@@ -133,9 +159,12 @@ export const HeroSection = () => {
 					<div className="relative mb-10 animate-fade-in-up">
 						<motion.button
 							onClick={() => setIsOpen(true)}
-							className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white font-bold text-lg shadow-xl shadow-black/25 cursor-pointer"
-							style={{ color: TEAL }}
-							whileHover={{ scale: 1.03, boxShadow: '0 24px 48px rgba(0,0,0,0.3)' }}
+							className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-lg cursor-pointer text-white"
+							style={{
+								background: TEAL,
+								boxShadow: `0 12px 32px oklch(0.52 0.117 195 / 0.32)`,
+							}}
+							whileHover={{ scale: 1.03, boxShadow: `0 20px 48px oklch(0.52 0.117 195 / 0.42)` }}
 							whileTap={{ scale: 0.97 }}
 							transition={{ type: 'spring', stiffness: 400, damping: 20 }}
 						>
@@ -144,11 +173,14 @@ export const HeroSection = () => {
 					</div>
 
 					{/* Trust badges */}
-					<div className="relative flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/55 animate-fade-in">
+					<div
+						className="relative flex flex-wrap items-center gap-x-5 gap-y-2 text-sm animate-fade-in"
+						style={{ color: INK_SUBTLE }}
+					>
 						{['Sem cartão de crédito', 'Plano gratuito disponível', 'Cancele quando quiser'].map(
 							(item) => (
 								<div key={item} className="flex items-center gap-1.5">
-									<span className="font-bold text-white/80">✓</span>
+									<span className="font-bold" style={{ color: TEAL }}>✓</span>
 									<span>{item}</span>
 								</div>
 							),
@@ -183,12 +215,12 @@ export const HeroSection = () => {
 						</motion.div>
 					</AnimatePresence>
 
-					{/* Blend left edge into teal on desktop */}
+					{/* Blend left edge into neutral on desktop */}
 					<div
 						aria-hidden
 						className="absolute inset-y-0 left-0 w-28 pointer-events-none hidden lg:block z-10"
 						style={{
-							background: `linear-gradient(to right, ${TEAL}, oklch(0.52 0.117 195 / 0))`,
+							background: `linear-gradient(to right, ${BG}, oklch(0.975 0.005 195 / 0))`,
 						}}
 					/>
 
